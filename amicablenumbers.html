@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset ="utf-8">
+	<title>Amicable Numbers</title>
+	<link rel="stylesheet" href= "amicablestyles.css">
+</head>
+
+<body>
+	<script language= "javascript">
+		function home(){
+			n1 = parseInt(document.getElementById("number1").value); 
+			n2 = parseInt(document.getElementById("number2").value); 
+			factor1 = isAFactor(n1);
+			factor2 = isAFactor(n2);
+			string1 = factor1.toString(); 
+			string2 = factor2.toString();  
+			alert("The factors of " + n1 + " are (" + string1 + ") and the factors of "
+				   + n2 + " are (" + string2 + ")");  
+			answer = isAmicable(factor1, factor2, n1, n2); 
+			if(answer == 1){
+				alert("The numbers " + n1 + " and " + n2 + " are amicable!"); 
+			} else {
+				alert("The numbers " + n1 + " and " + n2 + " are NOT amicable!"); 
+			}
+		}
+
+		function isAFactor(number){
+			factor = 1; 
+			var factors = []; 
+			while(factor <= number){
+				if(number%factor == 0){
+					factors.push(factor);
+				}
+				factor++; 
+			}
+			factors.pop(); 
+			return factors; 
+		}
+
+		function isAmicable(arr1, arr2, num1, num2){
+			sum1 = findSum(arr1); 
+			sum2 = findSum(arr2); 
+			if ((sum1 == num2) && (sum2 == num1)){
+				return 1; 
+			} else {
+				return 0; 
+			}
+		}
+
+		function findSum(arr){
+			length = arr.length;
+			result = 0; 
+			for (i = 0; i < length; i++){
+				result += arr[i]; 
+			}
+			return result; 
+		}
+
+	</script>
+	<form>
+		<h1>Are YOUR numbers amicable?</h1>
+		<h4>Enter the first number: </h4> <input type="text" id="number1">
+		<h4>Enter the second number: </h4> <input type="text" id="number2">
+		<br>
+		<br>
+		<button onclick="home()">Click me!</button>
+	</form>
+</body>
+</html>
+
+
